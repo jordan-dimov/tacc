@@ -17,3 +17,27 @@ def test_t_initialised_correctly_with_basic_arguments():
     assert(t.cr == Decimal('10.00'))
     assert(t.balance_type == BalanceType.DEBIT)
     assert(str(t) == "[5.00 // 10.00]")
+
+
+def test_t_initialised_correctly_with_extra_arguments():
+    t = T(
+        100.00, 20.00,
+        balance_type=BalanceType.CREDIT,
+        account_name="Fruit exchange",
+        label="apples",
+    )
+    assert(t.dr == Decimal('100.00'))
+    assert(t.cr == Decimal('20.00'))
+    assert(t.balance_type == BalanceType.CREDIT)
+    assert(t.account_name == "Fruit exchange")
+    assert(t.labels == ("apples",))
+
+
+def test_t_balance_for_debit_balance():
+    t = T(100, 20, balance_type=BalanceType.DEBIT)
+    assert(t.balance == 100 - 20)
+
+
+def test_t_balance_for_credit_balance():
+    t = T(100, 20, balance_type=BalanceType.CREDIT)
+    assert(t.balance == 20 - 100)

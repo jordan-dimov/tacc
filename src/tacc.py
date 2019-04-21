@@ -102,8 +102,8 @@ class MDT:
     @property
     def balance(self) -> Decimal:
         if self.balance_type == BalanceType.DEBIT:
-            return self.debit_balance()
-        return self.credit_balance()
+            return self.debit_balance
+        return self.credit_balance
 
     def is_disjoint(self) -> bool:
         return all(d == D0 for d in self.drs) or all(c == D0 for c in self.crs)
@@ -148,6 +148,14 @@ class T(MDT):
 
     def __str__(self) -> str:
         return "[{:.2f} // {:.2f}]".format(self.dr, self.cr)
+
+    @property
+    def debit_balance(self) -> Decimal:
+        return self.dr - self.cr
+
+    @property
+    def credit_balance(self) -> Decimal:
+        return self.cr - self.dr
 
 
 T0 = T(0, 0)
