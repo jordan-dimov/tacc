@@ -41,3 +41,18 @@ def test_t_balance_for_debit_balance():
 def test_t_balance_for_credit_balance():
     t = T(100, 20, balance_type=BalanceType.CREDIT)
     assert(t.balance == 20 - 100)
+
+
+def test_t_equality():
+    assert(T(100, 100) == T(0, 0))
+    assert(T(100, 20) == T(80, 0))
+    assert(T(20, 100) == T(0, 80))
+    assert(T(10, 20) == T(90, 100))
+
+
+def test_t_addition():
+    assert(T(100, 200) + T(20, 50)) == T(120, 250)
+
+
+def test_t_substraction():
+    assert(T(100, 200) - T(20, 50)) == T(80, 150)

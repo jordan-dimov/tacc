@@ -76,13 +76,13 @@ class MDT:
     def __add__(self, other: 'MDT') -> 'MDT':
         return self.clone(
             tuple(d1 + d2 for d1, d2 in zip(self.drs, other.drs)),
-            tuple(c1 + c1 for c1, c2 in zip(self.crs, other.crs)),
+            tuple(c1 + c2 for c1, c2 in zip(self.crs, other.crs)),
         )
 
     def __sub__(self, other: 'MDT') -> 'MDT':
         return self.clone(
             tuple(d1 - d2 for d1, d2 in zip(self.drs, other.drs)),
-            tuple(c1 - c1 for c1, c2 in zip(self.crs, other.crs)),
+            tuple(c1 - c2 for c1, c2 in zip(self.crs, other.crs)),
         )
 
     def __eq__(self, other: 'MDT') -> 'MDT':
