@@ -91,6 +91,9 @@ class MDT:
         return all((self.drs[i] + other.crs[i]) == (self.crs[i] + other.drs[i])
                    for i in range(self.cardinality))
 
+    def __bool__(self):
+        return self != T0
+
     @property
     def debit_balance(self) -> Decimal:
         return self.AmountVector(d - c for d, c in zip(self.drs, self.crs))
