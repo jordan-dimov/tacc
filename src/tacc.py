@@ -92,7 +92,7 @@ class MDT:
                    for i in range(self.cardinality))
 
     def __bool__(self):
-        return self != T0
+        return self != self.__class__()
 
     @property
     def debit_balance(self) -> Decimal:

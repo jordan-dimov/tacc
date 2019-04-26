@@ -56,3 +56,10 @@ def test_t_addition():
 
 def test_t_substraction():
     assert(T(100, 200) - T(20, 50)) == T(80, 150)
+
+
+def test_t_bool():
+    assert(bool(T(0, 0)) is False)
+    assert(bool(T(50, 50)) is False)
+    assert(bool(T(50, 0)) is True)
+    assert(bool(T(0, 0.1)) is True)
