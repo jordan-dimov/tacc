@@ -36,7 +36,7 @@ The examples above assume that we are using a single unit of currency across our
            |         || 250.00 | 0.35
            |         || 250.00 |
 
-We call these "_multi-dimensional T-accounts". 
+We call these "_multi-dimensional T-accounts_". 
 
 As noted by D. Ellerman in [2], it turns out that the concept of T-accounts maps very neatly into the mathematical (group theory) concept of the "_group of differences_". A T-account can be mapped to an ordered pair of unsigned real numbers, written (per Luca Pacioli) as: `[ Dr // Cr ]`. We can then construct a number system with additive inverses by using operations on these ordered pairs. This is essentially the same algebra used to work with complex numbers, just with different semantics. 
 
@@ -44,7 +44,12 @@ Also as noted by D. Ellerman, we can easily generalise this mathematical concept
 
 The `tacc` library defines Python classes that encapsulate both traditional and multi-dimensional T accounts, together with the common algebraic operations one would expect to be able to use with T-accounts in the context of bookkeeping. 
 
+### Python examples
 
--- 
-[1] Pacioli, Luca. "Summa de arithmetica, proportioni et proportionalita." Venecia: Paganino Paganini.
-[2] Ellerman, David. "On double-entry bookkeeping: The mathematical treatment." Accounting Education 23.5 (2014): 483-501.
+(Coming soon. Meanwhile, review the provided unit tests. )
+
+
+## Refrences
+
+* [1] Pacioli, Luca. "_Summa de arithmetica, proportioni et proportionalita._" Venecia: Paganino Paganini.
+* [2] Ellerman, David. "_On double-entry bookkeeping: The mathematical treatment._" Accounting Education 23.5 (2014): 483-501.
