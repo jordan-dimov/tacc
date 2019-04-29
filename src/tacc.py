@@ -40,7 +40,7 @@ class MDT:
         )
         self.drs = self.AmountVector(*(abs(Decimal(dr)) for dr in drs))
         self.crs = self.AmountVector(*(abs(Decimal(cr)) for cr in crs))
-        self._tuple: Tuple[Decimal, Decimal] = (self.drs, self.crs)
+        self._tuple: Tuple[Tuple[Any]] = (self.drs, self.crs)
         self.balance_type: BalanceType = balance_type
         self.account_name = account_name
         return None
@@ -140,6 +140,7 @@ class T(MDT):
             account_name=account_name,
             labels=(label,),
         )
+        self._tuple = (self.drs[0], self.crs[0])
 
     @property
     def dr(self) -> 'T':

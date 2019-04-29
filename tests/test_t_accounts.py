@@ -63,3 +63,31 @@ def test_t_bool():
     assert(bool(T(50, 50)) is False)
     assert(bool(T(50, 0)) is True)
     assert(bool(T(0, 0.1)) is True)
+
+
+def test_balance_for_debit_balance_t_account():
+    class DebitT(T):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.balance_type = BalanceType.DEBIT
+
+    assert(DebitT(0, 0).balance == Decimal('0.00'))
+    assert(DebitT(25, 0).balance == Decimal('25.00'))
+    assert(DebitT(25, 5).balance == Decimal('20.00'))
+    assert(DebitT(5, 25).balance == Decimal('-20.00'))
+
+
+def test_balance_for_credit_balance_t_account():
+    class DebitT(T):
+        def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+            self.balance_type = BalanceType.CREDIT
+
+    assert(DebitT(0, 0).balance == Decimal('0.00'))
+    assert(DebitT(25, 0).balance == Decimal('-25.00'))
+    assert(DebitT(25, 5).balance == Decimal('-20.00'))
+    assert(DebitT(5, 25).balance == Decimal('20.00'))
+
+
+def test_t_account_as_tuple():
+    assert(T(23, 34).as_tuple()) == (Decimal('23.00'), Decimal('34.00'))
